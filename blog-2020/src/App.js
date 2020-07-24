@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { Component } from "react";
+import { HashRouter, Route } from "react-router-dom"
+import Home from "./Home";
+import CreateContent from "./components/CreateContent";
 
-function App() {
-  return <h1>Hello!</h1>
-}
 
+class App extends Component {
+  render() {
+    return (
+      <HashRouter>
+        <Route path="/" exact={true} component={Home}/>
+        <Route path="/createContent" component={CreateContent}/>
+      </HashRouter>
+      
+    )
+  }
+}  
 export default App;
