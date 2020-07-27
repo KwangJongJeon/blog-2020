@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReadContent from "./components/ReadContent";
 import CRUDNavigator from "./components/CRUDNavigator";
-import BullitinBoard from "./components/BullitinBoard";
+import BulletinBoard from "./components/BulletinBoard";
 import CreateContent from "./components/CreateContent";
 import UpdateContent from "./components/UpdateContent";
 import DeleteContent from "./components/DeleteContent";
@@ -11,7 +11,7 @@ class Home extends Component {
         super(props);
         
         this.state = {
-            mode: "Home",
+            mode: "read",
             selected_content_id: 1,
             contents: [
                 {
@@ -46,31 +46,42 @@ class Home extends Component {
         if(this.state.mode === "create") {
             _article = <CreateContent onSubmit = {
                 function(_title, _desc) {
-                    console.log("Create process is running");
+                    console.log(" process iCreates running");
                     console.log('create', this);
                     console.log('state', this.state);
                     // debugger;
                     
                     this.max_content_id++;
                     var _contents = this.state.contents.concat(
-                        
                         {id:this.max_content_id, title:_title, desc: _desc}
                     )
 
                     this.setState({
-                        mode: "Home",
+                        mode: "read",
                         contents: _contents
                     });
                 }.bind(this)
             }/>
         }
         else if (this.state.mode === "update") {
-            _article = <UpdateContent/>
+            _article = <UpdateContent data={_content}
+                onChangeState = {
+                    
+                    function(id, title, desc) {
+                        if(id === this.selected_content_id) {
+                            this.setState({
+                                title,
+                                desc,
+                            })
+                        }
+                    }.bind(this)
+                }
+            />
         }
         else if (this.state.mode === "delete") {
             _article = <DeleteContent/>
         }
-        else if (this.state.mode === "Home") {
+        else if (this.state.mode === "read") {
             _article = <ReadContent title={_content.title} desc={_content.desc}/>
         }
 
@@ -88,7 +99,15 @@ class Home extends Component {
                         }.bind(this)
                     }
                 />
-                <BullitinBoard
+                <BulletinBoard
+                    onChangeMode={
+                        function(_mode) {
+                            this.setState({
+                                mode:_mode,
+                            });
+                            console.log(_mode);
+                        }.bind(this)
+                    }
                     onChangePage={
                         function(id) {
                             this.setState({

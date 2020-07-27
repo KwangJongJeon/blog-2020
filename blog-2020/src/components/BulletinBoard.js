@@ -1,6 +1,10 @@
 import React, { Component } from "react"
 
-class BullitinBoard extends Component {
+class BulletinBoard extends Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     shouldComponentUpdate(newProps, newState) {
         if(this.props.data === newProps.data) {
@@ -22,10 +26,17 @@ class BullitinBoard extends Component {
                 <li key={data[i].id}>
                     <a href={"/content/" + data[i].id}
                     data-id = {data[i].id}
-                    onClick = {function(e) {
-                        e.preventDefault();
-                        
-                    }}>{data[i].title}</a>
+                    // onClick = {function(e) {
+                    //     e.preventDefault();
+                    //     this.props.onChangePage();
+                    // }}.bind(this)
+                    onClick = {
+                        function(e) {
+                            e.preventDefault();
+                            this.props.onChangePage(e.target.dataset.id);
+                        }.bind(this)
+                    }
+                    >{data[i].title}</a>
                 </li>
                 
             )
@@ -42,4 +53,4 @@ class BullitinBoard extends Component {
     }
 }
 
-export default BullitinBoard;
+export default BulletinBoard;
