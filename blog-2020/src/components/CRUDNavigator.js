@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function CRUDNavigator({onChangeMode}) {
     return (
-        <div>
+        <div className="navbar">
             <Link to = {{
                 pathname:"/createContent",
                 state:{

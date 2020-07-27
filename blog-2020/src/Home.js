@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReadContent from "./components/ReadContent";
+import Subject from "./components/Subject";
+import HomeCSS from "./home.css";
 import CRUDNavigator from "./components/CRUDNavigator";
 import BulletinBoard from "./components/BulletinBoard";
 import CreateContent from "./components/CreateContent";
@@ -11,7 +13,7 @@ class Home extends Component {
         super(props);
         
         this.state = {
-            mode: "read",
+            mode: "welcome",
             selected_content_id: 1,
             contents: [
                 {
@@ -43,6 +45,9 @@ class Home extends Component {
         let _content = this.getReadContent();
         let _article = null;
 
+        if(this.state.mode === "welcome") {
+            _article = <ReadContent title="Welcome to My Blog!" desc="Have a Good Day!"/>
+        }
         if(this.state.mode === "create") {
             _article = <CreateContent onSubmit = {
                 function(_title, _desc) {
@@ -89,6 +94,7 @@ class Home extends Component {
         }
         else if (this.state.mode === "delete") {
             _article = <DeleteContent/>
+            
         }
         else if (this.state.mode === "read") {
             _article = <ReadContent title={_content.title} desc={_content.desc}/>
@@ -96,14 +102,52 @@ class Home extends Component {
 
 
         return (
-            <div className="Contents">
+            <div className="home">
 
-                {/* If click CRUDNavigator, Home's mode state be changed CRUDNavigator's value */}
-                <CRUDNavigator onChangeMode = {
+                <Subject 
+                    onChangeMode={
                         function(_mode) {
                             this.setState({
-                            mode:_mode,
+                                mode:_mode,
                             });
+                            console.log(_mode);
+                        }.bind(this)
+                    }
+                />
+                {/* If click CRUDNavigator, Home's mode state be changed CRUDNavigator's value */}
+                <CRUDNavigator 
+                     onChangeMode = {
+                        function(_mode) {
+                            if(_mode === "delete") {
+                                if(window.confirm("You really want to delete this content?")) {
+                                    var _contents = Array.from(this.state.contents);
+                                    console.log("1. _contents => ", _contents);
+                                    console.log("content =>", this.state.contents);
+                                    let i = 0;
+
+                                    while(i < _contents.length) {
+                                        if(_contents[i].id === this.state.selected_content_id) {
+                                            console.log("_contents => ", _contents )
+                                            _contents.splice(i, 1);
+                                            break;
+                                        }
+                                        i++;
+                                    }
+
+                                    i++;
+                                    this.setState({
+                                    mode:'read',
+                                    content:_contents,
+                                    });
+                                }
+
+                                
+                            } else {
+                                this.setState({
+                                    mode:_mode
+                                });
+                            }
+                            
                             console.log(_mode);
                         }.bind(this)
                     }

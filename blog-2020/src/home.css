@@ -1,0 +1,27 @@
+.home {
+    padding-left: 11em;
+    /* background-color: green; */
+    width: 100%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.titleImg {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+}
+
+
+.navbar {
+    position: absolute;
+    top: 22em;
+    left: 1em;
+    width: 9em;
+    font-size: larger;
+}
+
