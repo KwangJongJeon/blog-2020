@@ -44,6 +44,7 @@ class Home extends Component {
     render() {
         let _content = this.getReadContent();
         let _article = null;
+        console.log("first content: ", _content); 
 
         if(this.state.mode === "welcome") {
             _article = <ReadContent title="Welcome to My Blog!" desc="Have a Good Day!"/>
@@ -92,10 +93,6 @@ class Home extends Component {
                 
             />
         }
-        else if (this.state.mode === "delete") {
-            _article = <DeleteContent/>
-            
-        }
         else if (this.state.mode === "read") {
             _article = <ReadContent title={_content.title} desc={_content.desc}/>
         }
@@ -120,14 +117,14 @@ class Home extends Component {
                         function(_mode) {
                             if(_mode === "delete") {
                                 if(window.confirm("You really want to delete this content?")) {
-                                    var _contents = Array.from(this.state.contents);
-                                    console.log("1. _contents => ", _contents);
                                     console.log("content =>", this.state.contents);
+                                    let _contents = Array.from(this.state.contents);
+                                    console.log("1. _contents => ", _contents);
+                                    
                                     let i = 0;
 
                                     while(i < _contents.length) {
                                         if(_contents[i].id === this.state.selected_content_id) {
-                                            console.log("_contents => ", _contents )
                                             _contents.splice(i, 1);
                                             break;
                                         }
@@ -136,8 +133,8 @@ class Home extends Component {
 
                                     i++;
                                     this.setState({
-                                    mode:'read',
-                                    content:_contents,
+                                        mode:'welcome',
+                                        content:_contents,
                                     });
                                 }
 
