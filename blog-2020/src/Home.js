@@ -65,17 +65,26 @@ class Home extends Component {
         }
         else if (this.state.mode === "update") {
             _article = <UpdateContent data={_content}
-                onChangeState = {
-                    
-                    function(id, title, desc) {
-                        if(id === this.selected_content_id) {
-                            this.setState({
-                                title,
-                                desc,
-                            })
+                onSubmit = {
+                    function(_id, _title, _desc) {
+                        var _contents = Array.from(this.state.contents);
+                        
+                        var i = 0;
+                        while(i < _contents.length) {
+                            if(_contents[i].id === _id) {
+                                _contents[i] = {id:_id, title:_title, desc:_desc}
+                                break;
+                            }
+                            i++;
                         }
+                        console.log("OnSubmit in Update => ", _contents[i]);
+
+                        this.setState({
+                            contents:_contents
+                        });
                     }.bind(this)
-                }
+                }   
+                
             />
         }
         else if (this.state.mode === "delete") {
