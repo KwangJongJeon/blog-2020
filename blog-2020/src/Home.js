@@ -30,8 +30,9 @@ class Home extends Component {
             
         };
         this.max_content_id = 1;
-    }
 
+        
+    }
 
     getReadContent() {
         let i = 0;
@@ -89,6 +90,7 @@ class Home extends Component {
                         console.log("OnSubmit in Update => ", _contents[i]);
 
                         this.setState({
+                            mode:"read",
                             contents:_contents
                         });
                     }.bind(this)
@@ -102,12 +104,8 @@ class Home extends Component {
 
         return _article;
     }
-    
 
     render() {
-
-
-
         return (
             <div className="home">
 
