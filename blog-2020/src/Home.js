@@ -12,7 +12,7 @@ import DeleteContent from "./components/DeleteContent";
 /*
     2020-07-28
     TODO:
-    Implement MERN STACK
+    need to implement MERN STACK
 */
 class Home extends Component {
     constructor(props) {
