@@ -44,9 +44,8 @@ class Home extends Component {
             i++;
         }
     }
-    
 
-    render() {
+    getArticle() {
         let _content = this.getReadContent();
         let _article = null;
 
@@ -100,6 +99,13 @@ class Home extends Component {
         else if (this.state.mode === "read") {
             _article = <ReadContent title={_content.title} desc={_content.desc}/>
         }
+
+        return _article;
+    }
+    
+
+    render() {
+
 
 
         return (
@@ -174,7 +180,7 @@ class Home extends Component {
                     } 
                     data={this.state.contents}
                 />
-                {_article}
+                {this.getArticle()}
             </div>
         )
     }
