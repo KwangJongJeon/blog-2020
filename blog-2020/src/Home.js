@@ -8,6 +8,12 @@ import CreateContent from "./components/CreateContent";
 import UpdateContent from "./components/UpdateContent";
 import DeleteContent from "./components/DeleteContent";
 
+
+/*
+    2020-07-28
+    TODO:
+    Implement MERN STACK
+*/
 class Home extends Component {
     constructor(props) {
         super(props);
