@@ -20,7 +20,12 @@ class Home extends Component {
                     id:1,
                     title:"test",
                     desc:"this is test"
-                }
+                },
+                {
+                    id:2,
+                    title:"test2",
+                    desc:"this is test2"
+                },
             ],
             
         };
@@ -44,7 +49,6 @@ class Home extends Component {
     render() {
         let _content = this.getReadContent();
         let _article = null;
-        console.log("first content: ", _content); 
 
         if(this.state.mode === "welcome") {
             _article = <ReadContent title="Welcome to My Blog!" desc="Have a Good Day!"/>
@@ -112,15 +116,16 @@ class Home extends Component {
                     }
                 />
                 {/* If click CRUDNavigator, Home's mode state be changed CRUDNavigator's value */}
+                
                 <CRUDNavigator 
                      onChangeMode = {
                         function(_mode) {
                             if(_mode === "delete") {
                                 if(window.confirm("You really want to delete this content?")) {
-                                    console.log("content =>", this.state.contents);
-                                    let _contents = Array.from(this.state.contents);
-                                    console.log("1. _contents => ", _contents);
                                     
+                                    let _contents = Array.from(this.state.contents);
+                                    console.log("1. content =>", this.state.contents);
+                                    console.log("2. _contents => ", _contents);
                                     let i = 0;
 
                                     while(i < _contents.length) {
@@ -131,11 +136,12 @@ class Home extends Component {
                                         i++;
                                     }
 
-                                    i++;
+                                    
                                     this.setState({
                                         mode:'welcome',
-                                        content:_contents,
+                                        contents:_contents,
                                     });
+
                                 }
 
                                 
