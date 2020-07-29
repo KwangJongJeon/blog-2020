@@ -11,7 +11,7 @@ class CreateContent extends Component {
     render() {
         return (
             <article>
-                <h2>Create</h2>
+                <h2>Create Content</h2>
                 <form 
                     action = "/create-process" 
                     method = "post" 

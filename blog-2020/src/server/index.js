@@ -8,6 +8,8 @@ const blogRouter = require('./routes/blog-router');
 const app = express();
 const apiPort = 3000;
 
+// TODO:
+// test with postman and ROBO 3T
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(cors());
 app.use(bodyParser.json());

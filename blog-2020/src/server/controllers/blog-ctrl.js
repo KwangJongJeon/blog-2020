@@ -1,6 +1,6 @@
 const Blog = require('../models/blog-model')
 
-createContent = (req, res) => {
+let createContent = (req, res) => {
     const body = req.body
 
     if(!body) {
@@ -13,7 +13,7 @@ createContent = (req, res) => {
     const blog = new Blog(body);
 
     if (!blog) {
-        return res.status(400).json({ success: false, error: err })
+        return res.status(400).json({ success: false, error: true })
     }
 
     blog
@@ -33,7 +33,7 @@ createContent = (req, res) => {
         })
 }
 
-updateContent = async (req, res) => {
+let updateContent = async (req, res) => {
     const body = req.body
 
     if(!body) {
@@ -54,7 +54,7 @@ updateContent = async (req, res) => {
         content.name = body.name;
         content.time = body.time;
         content.rating = body.rating;
-        blog
+        content
             .save()
             .then(() => {
                 return res.status(200).json({
@@ -72,7 +72,7 @@ updateContent = async (req, res) => {
     })
 }
 
-deleteContent = async (req, res) => {
+let deleteContent = async (req, res) => {
     await Blog.findOneAndDelete({ _id: req.params.id }, (err, content) => {
         if(err) {
             return res.status(400).json({ success: false, error: err })
@@ -87,7 +87,7 @@ deleteContent = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-getContentById = async (req, res) => {
+let getContentById = async (req, res) => {
     await Blog.findOne({ _id: req.params.id }, ( err, content ) => {
         if(err) {
             return res.status(400).json({ success: false, error: err })
@@ -102,8 +102,8 @@ getContentById = async (req, res) => {
     }).catch(err => console.log(err));
 }
 
-getContents = async (req, res) => {
-    await Movie.find({}, (err, contents) => {
+let getContents = async (req, res) => {
+    await Blog.find({}, (err, contents) => {
         if(err) {
             return res.status(400).json;
         }

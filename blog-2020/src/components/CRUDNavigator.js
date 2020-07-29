@@ -6,7 +6,7 @@ function CRUDNavigator({onChangeMode}) {
     return (
         <div className="navbar">
             <Link to = {{
-                pathname:"/createContent",
+                pathname:"/content/create",
                 state:{
                     fromNavigation: true,
                     _title: null,
@@ -23,7 +23,7 @@ function CRUDNavigator({onChangeMode}) {
             </Link>
             <br/>
 
-            <Link to = "/update-process" onClick={
+            <Link to = "/content/update" onClick={
                 function(e) {
                     e.preventDefault();
                     onChangeMode("update");
