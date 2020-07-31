@@ -54,7 +54,7 @@ function CRUDNavigator({onChangeMode}) {
                     // e.preventDefault();
                     onChangeMode("Home");
                 }
-            }>Home</Link><br/>
+            }>List</Link><br/>
         </div>
     )
 }

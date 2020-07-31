@@ -23,7 +23,7 @@ const Delete = styled.div `
 class UpdateContent extends Component {
     updateContent = event => {
         event.preventDefault()
-        window.location.href = `/contents/update/${this.props.id}`
+        window.location.href = `/content/update/${this.props.id}`
     }
 
     render() {
@@ -34,7 +34,7 @@ class UpdateContent extends Component {
 class DeleteContent extends Component {
     deleteContent = event => {
         event.preventDefault()
-        
+
         if(window.confirm(`Do you want to delete this content ${this.props.id} permanently?`)) {
             api.deleteContentById(this.props.id);
             window.location.reload();
