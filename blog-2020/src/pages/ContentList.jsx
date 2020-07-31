@@ -10,6 +10,42 @@ const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `
 
+const Update = styled.div `
+    color: #ef9b0f;
+    cursor: pointer;
+`
+
+const Delete = styled.div `
+    color: #ff0000;
+    cursor: pointer;
+`
+
+class UpdateContent extends Component {
+    updateContent = event => {
+        event.preventDefault()
+        window.location.href = `/contents/update/${this.props.id}`
+    }
+
+    render() {
+        return <Update onClick={this.updateContent}>Update</Update>
+    }
+}
+
+class DeleteContent extends Component {
+    deleteContent = event => {
+        event.preventDefault()
+
+        if(window.confirm(`Do you want to delete this content ${this.props.id} permanently?`)) {
+            api.deleteContentById(this.props.id);
+            window.location.reload();
+        }
+    }
+
+    render() {
+        return <Delete onClick={this.deleteUser}>Delete</Delete>
+    }
+}
+
 class ContentList extends Component {
     constructor(props) {
         super(props)
