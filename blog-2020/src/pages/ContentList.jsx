@@ -4,7 +4,7 @@ import api from '../api'
 
 import styled from 'styled-components'
 
-// import "react-table/react-table.css"
+import "../styles/react-table.css";
 
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
@@ -34,7 +34,7 @@ class UpdateContent extends Component {
 class DeleteContent extends Component {
     deleteContent = event => {
         event.preventDefault()
-
+        
         if(window.confirm(`Do you want to delete this content ${this.props.id} permanently?`)) {
             api.deleteContentById(this.props.id);
             window.location.reload();
@@ -42,7 +42,7 @@ class DeleteContent extends Component {
     }
 
     render() {
-        return <Delete onClick={this.deleteUser}>Delete</Delete>
+        return <Delete onClick={this.deleteContent}>Delete</Delete>
     }
 }
 
@@ -92,6 +92,28 @@ class ContentList extends Component {
                 accessor: 'time',
                 Cell: props => <span>{props.value.join(' / ')}</span>,
             },
+            {
+                Header: '',
+                accessor: '',
+                Cell: function(props) {
+                    return (
+                        <span>
+                            <DeleteContent id={props.original._id} />
+                        </span>
+                    )
+                }
+            },
+            {
+                Header: '',
+                accessor: '',
+                Cell: function(props) {
+                    return (
+                        <span>
+                            <UpdateContent id={props.original._id} />
+                        </span>
+                    )
+                }
+            }
         ]
 
         let showTable = true
