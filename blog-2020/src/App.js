@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { HashRouter, Route } from "react-router-dom"
 import Home from "./Home";
-import CreateContent from "./components/CreateContent";
-import UpdateContent from "./components/UpdateContent";
+// import CreateContent from "./components/CreateContent";
+// import UpdateContent from "./components/UpdateContent";
+import { ContentList, ContentInsert, ContentUpdate } from './pages';
 
 
 class App extends Component {
@@ -10,11 +11,12 @@ class App extends Component {
     return (
       <HashRouter>
         <Route path="/" exact component={Home}/>
-        <Route path="/content/create" exact component={CreateContent}/>
+        <Route path="/content/list" exact component={ContentList}/>
+        <Route path="/content/create" exact component={ContentInsert}/>
         <Route 
-          path = "/contents/update"
+          path = "/content/update/:id"
           exact
-          component={UpdateContent}
+          component={ContentUpdate}
         />
       </HashRouter>
       

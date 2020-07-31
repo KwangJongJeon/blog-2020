@@ -14,7 +14,7 @@ function CRUDNavigator({onChangeMode}) {
                 }
             }} onClick={
                 function(e) {
-                    e.preventDefault();
+                    // e.preventDefault();
                     onChangeMode("create");
                 }
             }
@@ -25,7 +25,7 @@ function CRUDNavigator({onChangeMode}) {
 
             <Link to = "/content/update" onClick={
                 function(e) {
-                    e.preventDefault();
+                    // e.preventDefault();
                     onChangeMode("update");
                 }
             }
@@ -49,9 +49,9 @@ function CRUDNavigator({onChangeMode}) {
                 this Home nav is a temp component
                 make new nav then move to there 
             */}
-            <Link to = "/" onClick= {
+            <Link to = "/content/list" onClick= {
                 function(e) {
-                    e.preventDefault();
+                    // e.preventDefault();
                     onChangeMode("Home");
                 }
             }>Home</Link><br/>
