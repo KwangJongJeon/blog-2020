@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import ReadContent from "./components/ReadContent";
 import Subject from "./components/Subject";
-import HomeCSS from "./home.css";
+// import SideBar from "./components/sidebar";
 import CRUDNavigator from "./components/CRUDNavigator";
 import BulletinBoard from "./components/BulletinBoard";
 import CreateContent from "./components/CreateContent";
 import UpdateContent from "./components/UpdateContent";
 import DeleteContent from "./components/DeleteContent";
+import { SideBar, MainPage, Footer } from "./components";
 
+import "./home.css";
 
 /*
     2020-07-28
@@ -107,6 +109,7 @@ class Home extends Component {
         else if (this.state.mode === "read") {
             _article = <ReadContent title={_content.title} desc={_content.desc}/>
         }
+        _article = <sidebar/>
 
         return _article;
     }
@@ -127,7 +130,8 @@ class Home extends Component {
                 />
                 {/* If click CRUDNavigator, Home's mode state be changed CRUDNavigator's value */}
                 
-                <CRUDNavigator 
+                
+                {/* <CRUDNavigator 
                      onChangeMode = {
                         function(_mode) {
                             if(_mode === "delete") {
@@ -164,27 +168,32 @@ class Home extends Component {
                             console.log(_mode);
                         }.bind(this)
                     }
-                />
-                <BulletinBoard
-                    onChangeMode={
-                        function(_mode) {
-                            this.setState({
-                                mode:_mode,
-                            });
-                            console.log(_mode);
-                        }.bind(this)
-                    }
-                    onChangePage={
-                        function(id) {
-                            this.setState({
-                                mode:'read',
-                                selected_content_id:Number(id),
-                            });
-                        }.bind(this)
-                    } 
-                    data={this.state.contents}
-                />
-                {this.getArticle()}
+                /> */}
+                <div className="row">
+                    <SideBar/>
+                    <MainPage/>
+                    {/* <BulletinBoard
+                        onChangeMode={
+                            function(_mode) {
+                                this.setState({
+                                    mode:_mode,
+                                });
+                                console.log(_mode);
+                            }.bind(this)
+                        }
+                        onChangePage={
+                            function(id) {
+                                this.setState({
+                                    mode:'read',
+                                    selected_content_id:Number(id),
+                                });
+                            }.bind(this)
+                        } 
+                        data={this.state.contents}
+                    /> */}
+                    {/* {this.getArticle()} */}
+                </div>
+                <Footer/>
             </div>
         )
     }

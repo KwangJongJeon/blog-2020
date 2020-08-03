@@ -13,9 +13,6 @@ class BulletinBoard extends Component {
         return true;
     }
 
-    // TODO:
-    // review this code 
-    // if click title, list's content should be appeared
     render() {
         let lists = [];
         let data = this.props.data;
@@ -23,13 +20,9 @@ class BulletinBoard extends Component {
 
         while(i < data.length) {
             lists.push(
-                <li key={data[i].id}>
+                <li key={data[i].id} className = "contentTitleList">
                     <a href={"/content/" + data[i].id}
                     data-id = {data[i].id}
-                    // onClick = {function(e) {
-                    //     e.preventDefault();
-                    //     this.props.onChangePage();
-                    // }}.bind(this)
                     onClick = {
                         function(e) {
                             e.preventDefault();
@@ -44,8 +37,8 @@ class BulletinBoard extends Component {
         }
 
         return (
-            <nav>
-                <ul>
+            <nav >
+                <ul className="main">
                     {lists}
                 </ul>
             </nav>

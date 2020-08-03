@@ -1,12 +1,11 @@
 import React from 'react';
-import imgA from "./reactImage.png"
+// import { reactImg, HTMLImg, nodeJSImg } from './images'
 
 function Subject({ onChangeMode }) {
     console.log("props:", onChangeMode);
     return (
         
-        <div>
-            <img src = {imgA} alt="Title img" className="titleImg"></img>
+        <div className="header">
             <h1><a href="/"
                 onClick = {(e) => {
                     e.preventDefault();
