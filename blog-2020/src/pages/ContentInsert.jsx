@@ -8,15 +8,16 @@ const Title = styled.h1.attrs({
 })``
 
 const Wrapper = styled.div.attrs({
-    className: 'form-group',
+    className: 'flex-container',
 })`
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     margin: 0 30px;
 `
 
-
 const Label = styled.label`
-    display: inline;
+    display: flex;
     margin: 5px;
 
 `
@@ -28,6 +29,21 @@ const InputText = styled.input.attrs({
     margin: 5px;
 `
 
+const InputDesc = styled.textarea.attrs({
+    className: 'form-control',
+})`
+    height: 200px;
+    margin: 5px;
+
+`
+
+const ButtonContainer = styled.div.attrs({
+
+})`
+    display: flex;
+    justify-content: flex-end;
+`
+
 const Button = styled.button.attrs({
     className: `btn btn-primary`,
 })`
@@ -37,8 +53,10 @@ const Button = styled.button.attrs({
 const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
 })`
-    margin: 15px 15px 15px 5px
+    margin: 15px 15px 15px 5px;
+    align-items:flex-end;
 `
+
 
 
 class ContentInsert extends Component {
@@ -65,7 +83,7 @@ class ContentInsert extends Component {
             this.setState({ rating })
     }
 
-    handleChangeInputdesc = async event => {
+    handleChangeInputDesc = async event => {
         const desc = event.target.value; 
         this.setState({ desc })
     }
@@ -74,7 +92,7 @@ class ContentInsert extends Component {
         const { title, rating, desc } = this.state
         const arrayDesc = desc.split('/');
         const payload = { title, rating, desc: arrayDesc }
-
+        console.log("payload", payload)
         await api.insertContent(payload).then(rest => {
             window.alert(`Content inserted successfully`)
             this.setState({
@@ -112,14 +130,16 @@ class ContentInsert extends Component {
                 />
 
                 <Label>Desc</Label>
-                <InputText
+                <InputDesc
                     type="text"
                     value={desc}
-                    onChange={this.handleChangeInputdesc}
+                    onChange={this.handleChangeInputDesc}
                 />
-
-                <Button onClick={this.handleIncludeContent}>Add Content</Button>
-                <CancelButton href={'/content/list'}>Cancel</CancelButton>
+                
+                <ButtonContainer>
+                    <Button onClick={this.handleIncludeContent}>Add Content</Button>
+                    <CancelButton href={'/content/list'}>Cancel</CancelButton>
+                </ButtonContainer>
             </Wrapper>
         )
     }
