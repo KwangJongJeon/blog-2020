@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table-v6'
 import api from '../api'
+import ReadContent from '../components/ReadContent2.jsx'
 
 import styled from 'styled-components'
 
@@ -60,82 +61,21 @@ class ContentList extends Component {
         this.setState({ isLoading: true })
 
         await api.getAllContents().then(contents => {
+
             this.setState({
                 contents: contents.data.data,
                 isLoading: false,
             })
+            console.log("Content list's contents: ", this.state.contents);
+
         })
     }
 
     render() {
-        const { contents, isLoading } = this.state
-        console.log('TCL: contentsList -> render -> contents', contents)
+        const { contents, isLoading } = this.state;
+        console.log('TCL: contentsList -> render -> contents', contents);
 
-        const columns = [
-            {
-                Header: 'ID',
-                accessor: '_id',
-                filterable: true,
-            },
-            {
-                Header: 'Name',
-                accessor: 'name',
-                filterable: true,
-            },
-            {
-                Header: 'Rating',
-                accessor: 'rating',
-                filterable: true,
-            },
-            {
-                Header: 'Time',
-                accessor: 'time',
-                Cell: props => <span>{props.value.join(' / ')}</span>,
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: function(props) {
-                    return (
-                        <span>
-                            <DeleteContent id={props.original._id} />
-                        </span>
-                    )
-                }
-            },
-            {
-                Header: '',
-                accessor: '',
-                Cell: function(props) {
-                    return (
-                        <span>
-                            <UpdateContent id={props.original._id} />
-                        </span>
-                    )
-                }
-            }
-        ]
-
-        let showTable = true
-        if (!contents.length) {
-            showTable = false
-        }
-        console.log("contents====>", contents);
-
-        return (
-            <Wrapper>
-                {showTable && (
-                    <ReactTable
-                        data={contents}
-                        columns={columns}
-                        loading={isLoading}
-                        defaultPageSize={10}
-                        showPageSizeOptions={true}
-                        minRows={0}
-                    />
-                )}
-            </Wrapper>
-        )
+        return <ReadContent contents={contents}/>;
     }
 }
 

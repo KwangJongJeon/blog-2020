@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const blog = new Schema(
     {
         title: { type: String, required: true },
-        desc: { type: [String], required: true },
         rating: { type: Number, required: true},
+        desc: { type: String, required: true },
     },
     { timestamps: true },
 )

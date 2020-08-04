@@ -90,8 +90,7 @@ class ContentInsert extends Component {
 
     handleIncludeContent = async () => {
         const { title, rating, desc } = this.state
-        const arrayDesc = desc.split('/');
-        const payload = { title, rating, desc: arrayDesc }
+        const payload = { title, rating, desc }
         console.log("payload", payload)
         await api.insertContent(payload).then(rest => {
             window.alert(`Content inserted successfully`)
