@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import ReadContent from "./components/ReadContent";
 import Subject from "./components/Subject";
 // import SideBar from "./components/sidebar";
+import ReadContent from './components/ReadContent';
 import CRUDNavigator from "./components/CRUDNavigator";
 import BulletinBoard from "./components/BulletinBoard";
 import CreateContent from "./components/CreateContent";
 import UpdateContent from "./components/UpdateContent";
 import DeleteContent from "./components/DeleteContent";
-import { SideBar, MainPage, Footer } from "./components";
+import { SideBar, MainPage, Footer} from "./components";
 
 import "./home.css";
 

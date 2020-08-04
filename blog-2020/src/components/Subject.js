@@ -2,7 +2,6 @@ import React from 'react';
 // import { reactImg, HTMLImg, nodeJSImg } from './images'
 
 function Subject({ onChangeMode }) {
-    console.log("props:", onChangeMode);
     return (
         
         <div className="header">

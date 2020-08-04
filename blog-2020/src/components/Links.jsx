@@ -32,12 +32,12 @@ class Links extends Component {
                     <List>
                         <Item>
                             <Link to="/" className="navbar-brand">
-                                Contents
+                                HOME
                             </Link>
                         </Item>
                         <Item>
                             <Link to = "/content/list" className="nav-link">
-                                List Contents
+                                CategoryA
                             </Link>
                         </Item>
                         <Item>

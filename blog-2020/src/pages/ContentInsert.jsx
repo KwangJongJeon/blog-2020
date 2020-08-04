@@ -10,16 +10,21 @@ const Title = styled.h1.attrs({
 const Wrapper = styled.div.attrs({
     className: 'form-group',
 })`
+    display: flex;
     margin: 0 30px;
 `
 
+
 const Label = styled.label`
+    display: inline;
     margin: 5px;
+
 `
 
 const InputText = styled.input.attrs({
     className: 'form-control',
 })`
+    display: block;
     margin: 5px;
 `
 
@@ -41,15 +46,15 @@ class ContentInsert extends Component {
         super(props)
 
         this.state = {
-            name: '',
+            title: '',
             rating: '',
-            time: '',
+            desc: '',
         }
     }
 
-    handleChangeInputName = async event => {
-        const name = event.target.value;
-        this.setState({ name });
+    handleChangeInputTitle = async event => {
+        const title = event.target.value;
+        this.setState({ title });
     }
 
     handleChangeInputRating = async event => {
@@ -60,41 +65,41 @@ class ContentInsert extends Component {
             this.setState({ rating })
     }
 
-    handleChangeInputTime = async event => {
-        const time = event.target.value; 
-        this.setState({ time })
+    handleChangeInputdesc = async event => {
+        const desc = event.target.value; 
+        this.setState({ desc })
     }
 
     handleIncludeContent = async () => {
-        const { name, rating, time } = this.state
-        const arrayTime = time.split('/');
-        const payload = { name, rating, time: arrayTime }
+        const { title, rating, desc } = this.state
+        const arrayDesc = desc.split('/');
+        const payload = { title, rating, desc: arrayDesc }
 
         await api.insertContent(payload).then(rest => {
             window.alert(`Content inserted successfully`)
             this.setState({
-                name: '',
+                title: '',
                 rating: '',
-                time: '',
+                desc: '',
             })
         })
     }
 
     render() {
-        const { name, rating, time } = this.state
+        const { title, rating, desc } = this.state
 
         return (
             <Wrapper>
-                <Title>Create Movie</Title>
+                <Title>Create Content</Title>
 
-                <Label>Name: </Label>
+                <Label>Title: </Label>
                 <InputText
                     type="text"
-                    value={name}
-                    onChange={this.handleChangeInputName}
+                    value={title}
+                    onChange={this.handleChangeInputTitle}
                 />
 
-                <Label>Rating: </Label>
+                <Label>Date: </Label>
                 <InputText
                     type="number" 
                     step="0.1" 
@@ -106,11 +111,11 @@ class ContentInsert extends Component {
                     onChange={this.handleChangeInputRating}
                 />
 
-                <Label>Time</Label>
+                <Label>Desc</Label>
                 <InputText
                     type="text"
-                    value={time}
-                    onChange={this.handleChangeInputTime}
+                    value={desc}
+                    onChange={this.handleChangeInputdesc}
                 />
 
                 <Button onClick={this.handleIncludeContent}>Add Content</Button>
