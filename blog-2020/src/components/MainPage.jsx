@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 import ReadContent from './ReadContent2';
-
+import api from '../api';
 class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            content: [
-                {
-                    id: "1",
-                    title: "temp22",
-                    desc: "temp's desc",
-                    date: "Aug 04",
-                },
-                {
-                    id: "2",
-                    title: "temp33",
-                    desc: "temp33's desc",
-                    date: "Aug 03",
-                }
+            contents: [
+
 
             ]
         }
     }
+
+    componentDidMount = async () => {
+        this.setState({ isLoading: true })
+
+        await api.getAllContents().then(contents => {
+
+            this.setState({
+                contents: contents.data.data,
+                isLoading: false,
+            })
+            console.log("Content list's contents: ", this.state.contents);
+
+        })
+    }
+
     render() {
         return (
             <div className="mainPage">
-            <ReadContent contents={this.state.content}/>
+            <ReadContent contents={this.state.contents}/>
             <h2>Title HEADING</h2>
             <h5>Title description, Aug 3, 2020</h5>
             <div className="mainImages">Image</div>

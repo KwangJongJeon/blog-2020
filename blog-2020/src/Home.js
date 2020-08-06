@@ -12,9 +12,10 @@ import { SideBar, MainPage, Footer} from "./components";
 import "./home.css";
 
 /*
-    2020-07-28
+    2020-08-06
     TODO:
-    need to implement MERN STACK
+    Add CategoryA's CSS File
+    Add text editor(ContentInsert Page) to insert image button and select font style button
 */
 class Home extends Component {
     constructor(props) {

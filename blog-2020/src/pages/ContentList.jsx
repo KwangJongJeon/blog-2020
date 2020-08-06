@@ -75,7 +75,9 @@ class ContentList extends Component {
         const { contents, isLoading } = this.state;
         console.log('TCL: contentsList -> render -> contents', contents);
 
-        return <ReadContent contents={contents}/>;
+        return (
+            <ReadContent contents={contents}/>
+        );
     }
 }
 

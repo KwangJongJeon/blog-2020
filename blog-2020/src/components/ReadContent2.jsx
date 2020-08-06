@@ -1,25 +1,31 @@
 import React from 'react';
+import mainPage from '../styles/mainPage.css'
 
 function getContent(contents) {
     let lists = [];
+    let _createdAt = "Updated Time: ";
     for(let i = 0; i < contents.length; i++) {
-        lists.push(
-            <li key={contents[i].id} className = "mainContentList">
+        // _createdAt += contents[i].createdAt.slice(0, contents[i].createdAt.indexOf("T"));
+            lists.push(
+            <li key={contents[i].id} className = "articleList">
                 <a href = {"/content/" + contents.id}
+                    className = "articleInfo"
                     onClick = {
                         function(e) {
                             e.preventDefault();
                         }
                     }>
-                    <h2>{contents[i].title}</h2>
-                    <h5>{contents[i].date}</h5>
-                    <p>{contents[i].desc}</p>
+                    <div className = "articleTitleContainer">
+                        <h2 className = "articleTitle">{contents[i].title}</h2>
+                        <h5 className = "articleDate">{contents[i].createdAt}</h5>
+                    </div>
+                    <p className = "articleDesc">{contents[i].desc}</p>
                 </a>
+                
             </li>
         )
+        _createdAt = "Updated Time:  ";
     }
-    console.log("contents ==> ", contents);
-    console.log("lists ==> ", lists)
 
     return lists;
 }

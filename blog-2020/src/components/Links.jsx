@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import '../styles/navStyle.css';
+
+const navContainer = styled.div.attrs({
+    className: 'navContainer'
+})`
+    display: flex;
+    border: 1px solid red;
+`
 
 const Collapse = styled.div.attrs({
     className: 'collapse navbar-collapse',
@@ -25,28 +33,30 @@ class Links extends Component {
     render() {
         return (
             <React.Fragment> 
-                <Link to="/" className="navbar-brand">
-                    Contents
-                </Link>
-                <Collapse>
-                    <List>
-                        <Item>
-                            <Link to="/" className="navbar-brand">
-                                HOME
-                            </Link>
-                        </Item>
-                        <Item>
-                            <Link to = "/content/list" className="nav-link">
-                                CategoryA
-                            </Link>
-                        </Item>
-                        <Item>
-                            <Link to = "/content/create" className="nav-link">
-                                Create Content
-                            </Link>
-                        </Item>
-                    </List>
-                </Collapse>
+                <navContainer>
+                    <Link to="/" className="navbar-brand">
+                        Contents
+                    </Link>
+                    <Collapse>
+                        <List>
+                            <Item>
+                                <Link to="/" className="navbar-brand">
+                                    HOME
+                                </Link>
+                            </Item>
+                            <Item>
+                                <Link to = "/content/list" className="nav-link">
+                                    CategoryA
+                                </Link>
+                            </Item>
+                            <Item>
+                                <Link to = "/content/create" className="nav-link">
+                                    Create Content
+                                </Link>
+                            </Item>
+                        </List>
+                    </Collapse>
+                </navContainer>
             </React.Fragment>
         )
     }
