@@ -5,8 +5,6 @@ import ReadContent from '../components/ReadContent2.jsx'
 
 import styled from 'styled-components'
 
-import "../styles/react-table.css";
-
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `

@@ -1,5 +1,5 @@
 import React from 'react';
-import mainPage from '../styles/mainPage.css'
+import  '../styles/mainPage.css';
 
 function getContent(contents) {
     let lists = [];

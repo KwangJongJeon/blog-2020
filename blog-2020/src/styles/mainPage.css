@@ -26,14 +26,16 @@
     display: flex;
     border: 1px solid red;
     padding: 0.5em;
-    align-items: flex-end;
+    align-items: baseline;
 }
 
 .articleTitle {
     font-size: 2em;
+
 }
 
 .articleDate {
+    width: 100%;
     font-size: 0.8em;
     text-align: end;
     vertical-align: text-bottom;
@@ -43,8 +45,4 @@
     word-break: break-all;
     width: 100%;
     
-}
-
-.articleDesc {
-
 }
