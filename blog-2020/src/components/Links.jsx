@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import '../styles/navStyle.css';
+import '../styles/navStyle.css'
 
 const navContainer = styled.div.attrs({
     className: 'navContainer'

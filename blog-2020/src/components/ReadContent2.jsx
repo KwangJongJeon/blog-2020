@@ -19,7 +19,9 @@ function getContent(contents) {
                         <h2 className = "articleTitle">{contents[i].title}</h2>
                         <h5 className = "articleDate">{contents[i].createdAt}</h5>
                     </div>
-                    <p className = "articleDesc">{contents[i].desc}</p>
+                    <div className = "articleDescContainer">
+                        <p className = "articleDesc">{contents[i].desc}</p>
+                    </div>
                 </a>
                 
             </li>

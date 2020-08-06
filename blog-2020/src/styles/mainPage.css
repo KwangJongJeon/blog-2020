@@ -3,14 +3,23 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 10em;
+    border: 5px solid red;
+    align-content: space-around;
 }
 
 .articleList {
     flex: 25%;
     list-style-type: none;
     justify-content: center;
+    text-align: justify;
     border: 1px solid black;
     padding: 2em;
+}
+
+.articleInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
 }
 
 .articleTitleContainer {
@@ -20,21 +29,22 @@
     align-items: flex-end;
 }
 
-.articleInfo {
-}
-
 .articleTitle {
     font-size: 2em;
-    flex:20;
 }
 
 .articleDate {
-    flex:80;
     font-size: 0.8em;
     text-align: end;
     vertical-align: text-bottom;
 }
 
+.articleDescContainer  {
+    word-break: break-all;
+    width: 100%;
+    
+}
+
 .articleDesc {
-    font-size: 1.0em;
+
 }
