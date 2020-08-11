@@ -9,11 +9,73 @@ const { request } = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// TODO:
-// 2020-07-29 
-// need to fix CORS policy error. maybe, I can solve to use a proxy server? 
-// --> /jokes/random proxy server but it's not work 
-// refer to https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
+// Related with Auto0 
+// setting session
+// tutorial Link: https://manage.auth0.com/dashboard/us/dev-4p73htuo/applications/MGQ2tsnFzoUgLnudNJKAVm5UQu5uj7be/quickstart/nodejs
+let session = require('express-session');
+
+var userInViews = require('./lib/middleware/userInViews');
+var authRouter = require('./routes/auth');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
+var sess = {
+  secret: 'asd9aASgjkHU87',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true
+};
+
+if(app.get('env') === 'production') {
+  sess.cookie.secure = true;
+}
+
+app.use(session(sess));
+
+// Configure Passport with the application Setting
+
+// Load environment variables from .env
+var dotenv = require('dotenv');
+dotenv.config();
+
+// Load Passport
+var passport = require('passport');
+var Auth0Strategy = require('passport-auth0');
+
+// Configure Passport to use Auto0
+var strategy = new Auth0Strategy( {
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL:
+      process.env.AUTH0_CALLBACK_URL || 'http://locathost:3000/callback'
+  },
+  function (accessToken, refrestToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  }
+
+);
+
+passport.use(strategy);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+})
+
+app.use(userInViews());
+app.use('/', authRouter);
+app.use('/', indexRouter);
+app.use('/', usersRouter);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended:true }));
