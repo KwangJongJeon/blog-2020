@@ -14,6 +14,7 @@ class App extends Component {
       
       <Router>
         <NavBar/>
+        <hr/>
         <Switch>
           <Route path="/" exact component={Home}/>
           {/* <Route path= exact component={Home}/> */}

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { SideBar, MainPage, Footer } from "./components";
 
-import "./home.css";
+// import "./home.css";
 
 /*
     2020-08-06
@@ -18,10 +18,9 @@ class Home extends Component {
 
                 
                
-                <div className="row">
-                    <SideBar/>
+                <div className="columns">
                     <MainPage/>
-                    
+                    <SideBar/>
                 </div>
                 <Footer/>
             </div>
