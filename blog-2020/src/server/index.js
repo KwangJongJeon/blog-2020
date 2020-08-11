@@ -9,11 +9,13 @@ const { request } = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const path = require('path');
 // Related with Auto0 
 // setting session
 // tutorial Link: https://manage.auth0.com/dashboard/us/dev-4p73htuo/applications/MGQ2tsnFzoUgLnudNJKAVm5UQu5uj7be/quickstart/nodejs
 let session = require('express-session');
-
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 var userInViews = require('./lib/middleware/userInViews');
 var authRouter = require('./routes/auth');
 var indexRouter = require('./routes/index');
@@ -32,6 +34,12 @@ if(app.get('env') === 'production') {
 
 app.use(session(sess));
 
+
+/*
+  TODO: log date: 2020-08-11
+        Some bug is occured from index.js:39:13 
+        must be fixed
+*/
 // Configure Passport with the application Setting
 
 // Load environment variables from .env
@@ -48,9 +56,9 @@ var strategy = new Auth0Strategy( {
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
     callbackURL:
-      process.env.AUTH0_CALLBACK_URL || 'http://locathost:3000/callback'
+      process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
   },
-  function (accessToken, refrestToken, extraParams, profile, done) {
+  function (accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
