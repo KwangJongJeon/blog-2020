@@ -8,19 +8,40 @@ const Title = styled.h1.attrs({
 })``
 
 const Wrapper = styled.div.attrs({
-    className: 'form-group',
-}) `
+    className: 'flex-container',
+})`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     margin: 0 30px;
 `
 
 const Label = styled.label`
+    display: flex;
     margin: 5px;
+
 `
 
 const InputText = styled.input.attrs({
     className: 'form-control',
-}) `
+})`
+    display: block;
     margin: 5px;
+`
+
+const InputDesc = styled.textarea.attrs({
+    className: 'form-control',
+})`
+    height: 200px;
+    margin: 5px;
+
+`
+
+const ButtonContainer = styled.div.attrs({
+
+})`
+    display: flex;
+    justify-content: flex-end;
 `
 
 const Button = styled.button.attrs({
@@ -32,7 +53,8 @@ const Button = styled.button.attrs({
 const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
 })`
-    margin: 15px 15px 15px 5px
+    margin: 15px 15px 15px 5px;
+    align-items:flex-end;
 `
 
 class ContentUpdate extends Component {
@@ -41,14 +63,14 @@ class ContentUpdate extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            name: '',
+            title: '',
             rating: '',
-            time: '',
+            desc: '',
         }
     }
-    handleChangeInputName = async event => {
-        const name = event.target.value
-        this.setState({ name })
+    handleChangeInputTitle = async event => {
+        const title = event.target.value
+        this.setState({ title })
     }
 
     handleChangeInputRating = async event => {
@@ -59,22 +81,23 @@ class ContentUpdate extends Component {
         this.setState({ rating });
     }
 
-    handleChangeInputTime = async event => {
-        const time = event.target.value;
-        this.setState({ time })
+    handleChangeInputDesc = async event => {
+        const desc = event.target.value;
+        this.setState({ desc })
     }
 
     handleUpdateContent = async () => {
-        const { id, name, rating, time } = this.state 
-        const arrayTime = time.split('/')
-        const payload = { name, rating, time: arrayTime }
-
+        const { id, title, rating, desc } = this.state 
+        const payload = { title, rating, desc}
+        
         await api.updateContentById(id, payload).then(res => {
+            console.log("payload ===> ", payload);
+            console.log("id===> ", id);
             window.alert(`Content Updated successfully`)
             this.setState({
-                name: '',
+                title: '',
                 rating: '',
-                time: '',
+                desc: '',
             })
         })
     }
@@ -84,27 +107,27 @@ class ContentUpdate extends Component {
         const content = await api.getContentById(id)
 
         this.setState({
-            name: content.data.data.name,
+            title: content.data.data.title,
             rating: content.data.data.rating,
-            time: content.data.data.time.join('/'),
+            desc: content.data.data.desc,
         })
     }
 
     render() {
-        const { name, rating, time } = this.state
+        const { title, rating, desc } = this.state
         console.log('ContentUpdate is loaded!');
         return (
             <Wrapper>
                 <Title>Update Content</Title>
 
-                <Label>Name: </Label>
-                <InputText 
+                <Label>Title: </Label>
+                <InputText
                     type="text"
-                    value={name}
-                    onChange={this.handleChangeInputName}
+                    value={title}
+                    onChange={this.handleChangeInputTitle}
                 />
 
-                <Label>Rating: </Label>
+                <Label>Date: </Label>
                 <InputText
                     type="number" 
                     step="0.1" 
@@ -116,15 +139,17 @@ class ContentUpdate extends Component {
                     onChange={this.handleChangeInputRating}
                 />
 
-                <Label>Time</Label>
-                <InputText
+                <Label>Desc</Label>
+                <InputDesc
                     type="text"
-                    value={time}
-                    onChange={this.handleChangeInputTime}
+                    value={desc}
+                    onChange={this.handleChangeInputDesc}
                 />
-
-                <Button onClick={this.handleUpdateContent}>Update Content</Button>
-                <CancelButton href={'/content/list'}>Cancel</CancelButton>
+                
+                <ButtonContainer>
+                    <Button onClick={this.handleUpdateContent}>Update Content</Button>
+                    <CancelButton href={'/content/list'}>Cancel</CancelButton>
+                </ButtonContainer>
             </Wrapper>
         )
     }

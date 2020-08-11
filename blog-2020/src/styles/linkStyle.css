@@ -1,0 +1,25 @@
+.nav-link {
+    padding: 20px;
+    border: 1px red solid;
+    
+}
+
+.nav-container {
+    display: flex;
+    /* align-items: baseline; */
+}
+
+.github-link {
+    display: flex;
+    width: 100%;
+    align-self: flex-end;
+    border: 1px solid blue;
+}
+
+.github-logo {
+    /* width: 3em;
+    height: 3em; */
+    padding: 20px;
+    align-self: flex-end;
+    
+}

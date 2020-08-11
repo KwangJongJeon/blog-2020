@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReadContent from './ReadContent2';
+import ReadContent from './ReadContent';
 import api from '../api';
 class MainPage extends Component {
     constructor(props) {
@@ -29,7 +29,8 @@ class MainPage extends Component {
     render() {
         return (
             <div className="mainPage">
-            <ReadContent contents={this.state.contents}/>
+                <ReadContent contents={this.state.contents}/>
+
             <h2>Title HEADING</h2>
             <h5>Title description, Aug 3, 2020</h5>
             <div className="mainImages">Image</div>

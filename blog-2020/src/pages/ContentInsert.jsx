@@ -106,40 +106,86 @@ class ContentInsert extends Component {
         const { title, rating, desc } = this.state
 
         return (
-            <Wrapper>
-                <Title>Create Content</Title>
+            <div className="create-content-wrapper mx-5">
+                <div className="title">Create Content</div>
+                <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                        <input className="input" 
+                               type="text" 
+                               placeholder="Title input"
+                               value={title}
+                               onChange={this.handleChangeInputTitle}    
+                               />
+                    </div>
+                </div>
 
-                <Label>Title: </Label>
-                <InputText
-                    type="text"
-                    value={title}
-                    onChange={this.handleChangeInputTitle}
-                />
+                <div class="field">
+                    <label class="label">Desc</label>
+                    <div class="control">
+                        <textarea class="textarea" 
+                                  value={desc}
+                                  onChange={this.handleChangeInputDesc}
+                                  placeholder="Textarea"></textarea>
+                    </div>
+                </div>
 
-                <Label>Date: </Label>
-                <InputText
-                    type="number" 
-                    step="0.1" 
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
-                    value={rating}
-                    onChange={this.handleChangeInputRating}
-                />
+                <div class="field">
+                    <label class="label">Rating</label>
+                    <div class="control">
+                        <textarea class="textarea" 
+                                  value={rating}
+                                  onChange={this.handleChangeInputRating}
+                                  placeholder="rating"></textarea>
+                    </div>
+                </div>
 
-                <Label>Desc</Label>
-                <InputDesc
-                    type="text"
-                    value={desc}
-                    onChange={this.handleChangeInputDesc}
-                />
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-primary"
+                                onClick={this.handleIncludeContent}>Submit</button>
+                    </div>
+                    <div class="control">
+                        <a href='/content/list'>
+                            <button className="button is-danger is-light"
+                                    href={'/content/list'}>Cancel</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            // <Wrapper>
+            //     <Title>Create Content</Title>
+            //     <Label>Title: </Label>
+            //     <InputText
+            //         type="text"
+            //         value={title}
+            //         onChange={this.handleChangeInputTitle}
+            //     />
+
+            //     <Label>Date: </Label>
+            //     <InputText
+            //         type="number" 
+            //         step="0.1" 
+            //         lang="en-US"
+            //         min="0"
+            //         max="10"
+            //         pattern="[0-9]+([,\.][0-9]+)?"
+            //         value={rating}
+            //         onChange={this.handleChangeInputRating}
+            //     />
+
+            //     <Label>Desc</Label>
+            //     <InputDesc
+            //         type="text"
+            //         value={desc}
+            //         onChange={this.handleChangeInputDesc}
+            //     />
                 
-                <ButtonContainer>
-                    <Button onClick={this.handleIncludeContent}>Add Content</Button>
-                    <CancelButton href={'/content/list'}>Cancel</CancelButton>
-                </ButtonContainer>
-            </Wrapper>
+            //     <ButtonContainer>
+            //         <Button onClick={this.handleIncludeContent}>Add Content</Button>
+            //         <CancelButton href={'/content/list'}>Cancel</CancelButton>
+            //     </ButtonContainer>
+            // </Wrapper>
         )
     }
 }

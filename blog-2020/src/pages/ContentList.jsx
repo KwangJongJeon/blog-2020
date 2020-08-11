@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table-v6'
 import api from '../api'
-import ReadContent from '../components/ReadContent2.jsx'
+import ReadContent from '../components/ReadContent.jsx'
 
 import styled from 'styled-components'
 
@@ -74,7 +74,9 @@ class ContentList extends Component {
         console.log('TCL: contentsList -> render -> contents', contents);
 
         return (
-            <ReadContent contents={contents}/>
+            <div>
+                <ReadContent contents={contents}/>
+            </div>
         );
     }
 }

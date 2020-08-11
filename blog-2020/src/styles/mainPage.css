@@ -44,5 +44,21 @@
 .articleDescContainer  {
     word-break: break-all;
     width: 100%;
-    
+    padding-bottom: 3em;
+}
+
+.articleButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    /* border: 1px solid blue; */
+}
+
+.articleUpdateButton {
+    text-align: end;
+    padding-right: 0.8em;
+}
+
+.articleUpdateButton {
+    text-align: end;
+
 }

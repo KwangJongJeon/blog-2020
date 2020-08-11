@@ -1,63 +1,64 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import '../styles/navStyle.css'
+import githubLogo from '../components/images/GitHub-Mark-64px.png'
+import '../styles/linkStyle.css'
 
-const navContainer = styled.div.attrs({
-    className: 'navContainer'
-})`
-    display: flex;
-    border: 1px solid red;
-`
 
-const Collapse = styled.div.attrs({
-    className: 'collapse navbar-collapse',
-})``
-
-const List = styled.div.attrs({
-    className: 'navbar-nav mr-auto',
-})`
-    display: flex;
-    text-align: center;
-`
-
-const Item = styled.div.attrs({
-    className: 'collapse navbar-collapse',
-})`
-    font-size: 1.2em;
-    padding: 20px;
-    background-color: grey;
-`
 
 class Links extends Component {
     render() {
         return (
-            <React.Fragment> 
-                <navContainer>
-                    <Link to="/" className="navbar-brand">
-                        Contents
-                    </Link>
-                    <Collapse>
-                        <List>
-                            <Item>
-                                <Link to="/" className="navbar-brand">
-                                    HOME
-                                </Link>
-                            </Item>
-                            <Item>
-                                <Link to = "/content/list" className="nav-link">
-                                    CategoryA
-                                </Link>
-                            </Item>
-                            <Item>
-                                <Link to = "/content/create" className="nav-link">
-                                    Create Content
-                                </Link>
-                            </Item>
-                        </List>
-                    </Collapse>
-                </navContainer>
-            </React.Fragment>
+            <div class="navbar-start">
+
+{/*                     
+                <a class="navbar-item" href="/">
+                    Home
+                </a>
+
+                <a class = "navbar-item" href="/content/list">
+                    CategoryA
+                </a>
+
+                <a class = "navbar-item" href="/content/create">
+                    Create Content
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class = "navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            ITEM1
+                        </a>
+                        <a class="navbar-item">
+                            ITEM2
+                        </a>
+                        <a class="navbar-item">
+                            ITEM3
+                        </a>
+                        <hr class="navbar-divider"/>
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">
+                            Log in
+                        </a>
+                    </div>
+                </div> */}
+            </div>
         )
     }
 }
