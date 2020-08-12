@@ -1,61 +1,10 @@
 import React, { Component } from 'react'
 import api from '../api'
 
+import {TextEditor} from '../components'
+
 import styled from 'styled-components'
 
-const Title = styled.h1.attrs({
-    className: 'h1',
-})``
-
-const Wrapper = styled.div.attrs({
-    className: 'flex-container',
-})`
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin: 0 30px;
-`
-
-const Label = styled.label`
-    display: flex;
-    margin: 5px;
-
-`
-
-const InputText = styled.input.attrs({
-    className: 'form-control',
-})`
-    display: block;
-    margin: 5px;
-`
-
-const InputDesc = styled.textarea.attrs({
-    className: 'form-control',
-})`
-    height: 200px;
-    margin: 5px;
-
-`
-
-const ButtonContainer = styled.div.attrs({
-
-})`
-    display: flex;
-    justify-content: flex-end;
-`
-
-const Button = styled.button.attrs({
-    className: `btn btn-primary`,
-})`
-    margin: 15px 15px 15px 5px;
-`
-
-const CancelButton = styled.a.attrs({
-    className: `btn btn-danger`,
-})`
-    margin: 15px 15px 15px 5px;
-    align-items:flex-end;
-`
 
 
 
@@ -124,6 +73,7 @@ class ContentInsert extends Component {
                     <label class="label">Desc</label>
                     <div class="control">
                         <textarea class="textarea" 
+                                  id="mytextarea"
                                   value={desc}
                                   onChange={this.handleChangeInputDesc}
                                   placeholder="Textarea"></textarea>
@@ -133,7 +83,7 @@ class ContentInsert extends Component {
                 <div class="field">
                     <label class="label">Rating</label>
                     <div class="control">
-                        <textarea class="textarea" 
+                        <textarea className ="textarea" 
                                   value={rating}
                                   onChange={this.handleChangeInputRating}
                                   placeholder="rating"></textarea>
@@ -153,6 +103,7 @@ class ContentInsert extends Component {
                     </div>
                 </div>
             </div>
+
         )
     }
 }

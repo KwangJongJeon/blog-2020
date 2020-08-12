@@ -7,6 +7,7 @@ import MainPage from './MainPage';
 import Footer from './Footer';
 import UserInfo from './UserInfo';
 import SideMenu from './SideMenu';
+import TextEditor from './TextEditor';
 
 export {
     ReadContent,
@@ -18,4 +19,5 @@ export {
     Footer,
     UserInfo,
     SideMenu,
+    TextEditor,
 }

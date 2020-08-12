@@ -5,8 +5,16 @@ import styled from 'styled-components'
 import Logo from './Logo'
 import Links from './Links'
 
+import api from '../api'
+
 
 class NavBar extends Component {
+
+
+    handleLogin = async () => {
+        await api.loginWithGoogle()
+    }
+
     render() {
         return (
             <nav className="navbar my-3" role="navigation" aria-label="main navigation" >
@@ -54,9 +62,9 @@ class NavBar extends Component {
                                 <a className="button is-primary">
                                     <strong>Sign up</strong>
                                 </a>
-                                <a className="button is-light" href = "/login">
+                                <button className="button is-light" onClick={this.handleLogin}>
                                     Log in
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>

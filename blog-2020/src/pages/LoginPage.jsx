@@ -3,6 +3,8 @@ import LoginImage from '../images/nav-image.JPG'
 
 
 class LoginPage extends Component {
+
+
     render() {
         return (
             <section className="hero">

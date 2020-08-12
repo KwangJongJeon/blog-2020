@@ -8,8 +8,8 @@ class SideMenu extends Component {
                     Portfolio
                 </p>
                 <ul className="menu-list">
-                    <li><a>DashBoard</a></li>
-                    <li><a>MERN Project</a></li>
+                    <li><a href="/">DashBoard</a></li>
+                    <li><a href="/content/list">MERN Project</a></li>
                 </ul>
                 <p className="menu-label">
                     Administration
