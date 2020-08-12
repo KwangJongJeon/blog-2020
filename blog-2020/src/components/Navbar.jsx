@@ -5,10 +5,6 @@ import styled from 'styled-components'
 import Logo from './Logo'
 import Links from './Links'
 
-const Container = styled.div.attrs({
-    className: 'container'
-})`
-`
 
 class NavBar extends Component {
     render() {
@@ -58,7 +54,7 @@ class NavBar extends Component {
                                 <a className="button is-primary">
                                     <strong>Sign up</strong>
                                 </a>
-                                <a className="button is-light">
+                                <a className="button is-light" href = "/login">
                                     Log in
                                 </a>
                             </div>

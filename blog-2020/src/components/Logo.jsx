@@ -12,7 +12,7 @@ class Logo extends Component {
     render() {
         return (
             <div class = "navbar-brand">
-                <a class="navbar-item" href = "">
+                <a class="navbar-item" href = "/">
                     <img src={logo}/>
                 </a>
 

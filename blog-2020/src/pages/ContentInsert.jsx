@@ -153,39 +153,6 @@ class ContentInsert extends Component {
                     </div>
                 </div>
             </div>
-            // <Wrapper>
-            //     <Title>Create Content</Title>
-            //     <Label>Title: </Label>
-            //     <InputText
-            //         type="text"
-            //         value={title}
-            //         onChange={this.handleChangeInputTitle}
-            //     />
-
-            //     <Label>Date: </Label>
-            //     <InputText
-            //         type="number" 
-            //         step="0.1" 
-            //         lang="en-US"
-            //         min="0"
-            //         max="10"
-            //         pattern="[0-9]+([,\.][0-9]+)?"
-            //         value={rating}
-            //         onChange={this.handleChangeInputRating}
-            //     />
-
-            //     <Label>Desc</Label>
-            //     <InputDesc
-            //         type="text"
-            //         value={desc}
-            //         onChange={this.handleChangeInputDesc}
-            //     />
-                
-            //     <ButtonContainer>
-            //         <Button onClick={this.handleIncludeContent}>Add Content</Button>
-            //         <CancelButton href={'/content/list'}>Cancel</CancelButton>
-            //     </ButtonContainer>
-            // </Wrapper>
         )
     }
 }

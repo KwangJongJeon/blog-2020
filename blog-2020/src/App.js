@@ -4,9 +4,8 @@ import Home from "./Home";
 
 import { NavBar } from './components'
 
-import { ContentList, ContentInsert, ContentUpdate } from './pages';
+import { ContentList, ContentInsert, ContentUpdate, LoginPage } from './pages';
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends Component {
   render() {
@@ -25,6 +24,7 @@ class App extends Component {
             exact
             component={ContentUpdate}
           />
+          <Route path="/login" exact component={LoginPage}/>
         </Switch>
       </Router>
     )

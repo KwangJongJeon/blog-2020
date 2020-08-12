@@ -37,8 +37,7 @@ app.use(session(sess));
 
 /*
   TODO: log date: 2020-08-11
-        Some bug is occured from index.js:39:13 
-        must be fixed
+        integrate auth0 function with Frontend(localhost:8000)
 */
 // Configure Passport with the application Setting
 
