@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Home from "./Home";
 
-import { NavBar } from './components'
+import { NavBar, ContentView} from './components'
 
 import { ContentList, ContentInsert, ContentUpdate, LoginPage } from './pages';
 
@@ -24,6 +24,7 @@ class App extends Component {
             exact
             component={ContentUpdate}
           />
+          <Route path="/content/:id" exact component={ContentView}/>
           <Route path="/login" exact component={LoginPage}/>
         </Switch>
       </Router>
