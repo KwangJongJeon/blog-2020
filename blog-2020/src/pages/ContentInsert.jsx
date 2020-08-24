@@ -73,7 +73,6 @@ class ContentInsert extends Component {
                     <label class="label">Desc</label>
                     <div class="control">
                         <textarea class="textarea" 
-                                  id="mytextarea"
                                   value={desc}
                                   onChange={this.handleChangeInputDesc}
                                   placeholder="Textarea"></textarea>

@@ -2,11 +2,16 @@ import React, {Component} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
 class TextEditor extends Component {
-  handleEditorChange = (e) => {
-    console.log(
-      'Content was updated:',
-      e.target.getContent()
-    )
+
+  constructor(props) {
+    super(props);
+
+    this.state = { content: '' };
+    this.handleEditorChange = this.handleEditorChange.bind(this);
+  }
+
+  handleEditorChange(content, editor) {
+    this.setState({ content });
   }
 
   render() {
@@ -28,7 +33,8 @@ class TextEditor extends Component {
             alignleft aligncenter alignright | \
             bullist numlist outdent indent | help'
         }}
-        onChange={this.handleEditorChange}
+        value={this.state.content}
+        onEditorChange={this.handleEditorChange}
       />
     )
   }

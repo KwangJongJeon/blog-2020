@@ -11,17 +11,11 @@ const Wrapper = styled.a.attrs({
 class Logo extends Component {
     render() {
         return (
-            <div class = "navbar-brand">
+
                 <a class="navbar-item" href = "/">
                     <img src={logo}/>
                 </a>
 
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expended="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
 
         )
     }

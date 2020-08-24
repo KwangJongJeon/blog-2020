@@ -8,7 +8,6 @@ import Footer from './Footer';
 import UserInfo from './UserInfo';
 import SideMenu from './SideMenu';
 import TextEditor from './TextEditor';
-import ContentView from './ContentView';
 
 export {
     ReadContent,
@@ -21,5 +20,4 @@ export {
     UserInfo,
     SideMenu,
     TextEditor,
-    ContentView,
 }

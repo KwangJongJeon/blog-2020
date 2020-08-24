@@ -1,1 +1,1 @@
-web: cd ./src && npm start
+web: cd ./blog-2020 && npm start

@@ -17,8 +17,17 @@ class NavBar extends Component {
 
     render() {
         return (
+            
             <nav className="navbar my-3" role="navigation" aria-label="main navigation" >
-                <Logo/>
+                <div className="navbar-brand">
+                    <Logo/>
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
                 <div id="navbarBasicExample" class="navbar-menu">
                     <div className="navbar-start">
                     
@@ -62,14 +71,14 @@ class NavBar extends Component {
                                 <a className="button is-primary">
                                     <strong>Sign up</strong>
                                 </a>
-                                <button className="button is-light" onClick={this.handleLogin}>
+                                <a className="button is-light" onClick={this.handleLogin}>
                                     Log in
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav> 
             
             // <Container>
             //     <Nav>

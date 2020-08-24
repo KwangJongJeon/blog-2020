@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Home from "./Home";
 
-import { NavBar, ContentView} from './components'
+import { NavBar } from './components'
 
-import { ContentList, ContentInsert, ContentUpdate, LoginPage } from './pages';
+import { ContentList, ContentInsert, ContentUpdate, LoginPage, ContentView } from './pages';
 
 
 class App extends Component {

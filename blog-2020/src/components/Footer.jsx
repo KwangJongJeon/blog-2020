@@ -6,7 +6,7 @@ class Footer extends Component {
             <footer className="footer">
                 <div class="content has-text-centered">
                     <p>
-                        <strong>This Page</strong> is made by KJ Jeon
+                        by KJ Jeon
                     </p>
                 </div>
             </footer>
